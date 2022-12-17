@@ -18,6 +18,8 @@ export const onCreateItems = /* GraphQL */ `
           id
           EventName
           EventDescription
+          StartTime
+          EndTime
           itemsID
           createdAt
           updatedAt
@@ -47,6 +49,8 @@ export const onUpdateItems = /* GraphQL */ `
           id
           EventName
           EventDescription
+          StartTime
+          EndTime
           itemsID
           createdAt
           updatedAt
@@ -76,6 +80,8 @@ export const onDeleteItems = /* GraphQL */ `
           id
           EventName
           EventDescription
+          StartTime
+          EndTime
           itemsID
           createdAt
           updatedAt
@@ -94,6 +100,8 @@ export const onCreateEvents = /* GraphQL */ `
       id
       EventName
       EventDescription
+      StartTime
+      EndTime
       itemsID
       createdAt
       updatedAt
@@ -106,6 +114,8 @@ export const onUpdateEvents = /* GraphQL */ `
       id
       EventName
       EventDescription
+      StartTime
+      EndTime
       itemsID
       createdAt
       updatedAt
@@ -118,6 +128,8 @@ export const onDeleteEvents = /* GraphQL */ `
       id
       EventName
       EventDescription
+      StartTime
+      EndTime
       itemsID
       createdAt
       updatedAt

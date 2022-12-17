@@ -18,6 +18,8 @@ export const getItems = /* GraphQL */ `
           id
           EventName
           EventDescription
+          StartTime
+          EndTime
           itemsID
           createdAt
           updatedAt
@@ -64,6 +66,8 @@ export const getEvents = /* GraphQL */ `
       id
       EventName
       EventDescription
+      StartTime
+      EndTime
       itemsID
       createdAt
       updatedAt
@@ -81,6 +85,8 @@ export const listEvents = /* GraphQL */ `
         id
         EventName
         EventDescription
+        StartTime
+        EndTime
         itemsID
         createdAt
         updatedAt
@@ -135,6 +141,8 @@ export const eventsByItemsID = /* GraphQL */ `
         id
         EventName
         EventDescription
+        StartTime
+        EndTime
         itemsID
         createdAt
         updatedAt
