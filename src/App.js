@@ -131,70 +131,74 @@ function App() {
     )
   }
 
+  const list = document.querySelectorAll('.list');
+  function activeLink() {
+    list.forEach((item) =>
+      item.classList.remove('active'));
+      this.classList.add('active');
+    }
+    list.forEach((item) =>
+    item.addEventListener('click', activeLink));
+  
   return (
-    <div>
-      <div id="topbar">
+    <React.Fragment>
+      <div className="topbar">
         <ul>
-          <li>Overview</li>
-          <li>Database</li>
-          <li>Tags</li>
-          <li>Calendar</li>
+          <li className="list active"><a href="#">Overview</a></li>
+          <li className="list"><a href="#">Database</a></li>
+          <li className="list"><a href="#">Tags</a></li>
+          <li className="list"><a href="#">Calendar</a></li>
+          <div className="indicator"></div>
         </ul>
+        
       </div>
-      <div className="sidebar"> Sidebar
-        <div>
-          {
-            Categories.map(Category => ( //map categories output
-              <div className="categories_output" key={Category.id}>
-              <div>{Category.CategoryName}</div>
-              </div>
-            ))
-          }
+
+      <div id="main_container">
+        <div id="myexperiments">
+          My Code
+          <div>
+            <input
+              onChange={e => setFormData2({ ...formData2, 'CategoryName': e.target.value})}
+              placeholder="Category Name"
+              value={formData2.CategoryName}
+            />
+          </div>
+          <button className="button_create" onClick={createCategory}>Create Category</button>
+          <div>
+            {
+              Categories.map(Category => ( //map categories output
+                <div className="categories_output" key={Category.id}>
+                <div>{Category.CategoryName}</div>
+                </div>
+              ))
+            }
+          </div>
+          <div className="items_input">
+            <input
+              onChange={e => setFormData({ ...formData, 'ItemName': e.target.value})}
+              placeholder="Item Name"
+              value={formData.ItemName}
+            />
+            <input
+              onChange={e => setFormData({ ...formData, 'ItemDescription': e.target.value})}
+              placeholder="Item Description"
+              value={formData.ItemDescription}
+            />
+          </div>
+          <button className="button_create" onClick={createItem}>Create Item</button>
+          <div>
+            {
+              Items.map(Item => ( //map items output
+                <div className="items_output" key={Item.id}>
+                <div>{Item.ItemName} {Item.ItemDescription}</div>
+                <button onClick={() => deleteItem(Item)}>Delete Item</button>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
-      My Experiments
-      <div>
-        <input
-          onChange={e => setFormData2({ ...formData2, 'CategoryName': e.target.value})}
-          placeholder="Category Name"
-          value={formData2.CategoryName}
-        />
-      </div>
-      <button className="button_create" onClick={createCategory}>Create Category</button>
-      <div>
-        {
-          Categories.map(Category => ( //map categories output
-            <div className="categories_output" key={Category.id}>
-            <div>{Category.CategoryName}</div>
-            </div>
-          ))
-        }
-      </div>
-      <div className="items_input">
-        <input
-          onChange={e => setFormData({ ...formData, 'ItemName': e.target.value})}
-          placeholder="Item Name"
-          value={formData.ItemName}
-        />
-        <input
-          onChange={e => setFormData({ ...formData, 'ItemDescription': e.target.value})}
-          placeholder="Item Description"
-          value={formData.ItemDescription}
-        />
-      </div>
-      <button className="button_create" onClick={createItem}>Create Item</button>
-      <div>
-        {
-          Items.map(Item => ( //map items output
-            <div className="items_output" key={Item.id}>
-            <div>{Item.ItemName} {Item.ItemDescription}</div>
-            <button onClick={() => deleteItem(Item)}>Delete Item</button>
-            </div>
-          ))
-        }
-      </div>
-    
-    </div>
+    </React.Fragment>
   );
 }
 
