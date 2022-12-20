@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {API} from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
+import awsmobile from './aws-exports';
+Amplify.configure(awsmobile);
 import * as queries from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import './App.css';
