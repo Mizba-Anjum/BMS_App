@@ -142,20 +142,59 @@ function App() {
   
   return (
     <React.Fragment>
-      <div className="topbar">
+      <div id="topbar">
         <ul>
-          <li className="list active"><a href="#">Overview</a></li>
-          <li className="list"><a href="#">Database</a></li>
-          <li className="list"><a href="#">Tags</a></li>
-          <li className="list"><a href="#">Calendar</a></li>
-          <div className="indicator"></div>
+          <li className="t_list active"><a href="#">Overview</a></li>
+          <li className="t_list"><a href="#">Database</a></li>
+          <li className="t_list"><a href="#">Tags</a></li>
+          <li className="t_list"><a href="#">Calendar</a></li>
+          <div id="indicator"></div>
         </ul>
-        
       </div>
 
       <div id="main_container">
-        <div id="myexperiments">
-          My Code
+        <div id="sidebar">
+          <ul>
+            <li className="s_list active"><a href="#">Category 1</a></li>
+            <li className="s_list"><a href="#">Category 2</a></li>
+            <li className="s_list"><a href="#">Category 3</a></li>
+          </ul>
+        </div>
+        <div id="main_content">
+          <h3 className="item_title">Items</h3>
+          <div id="items_list">
+            <div className="row">
+              <div className="col-sm">Name</div>
+              <div className="col-sm">Description</div>
+              <div className="col-sm"></div>
+            </div>
+            {
+              Items.map(Item => ( //map items output
+                <div className="items_output row" key={Item.id}>
+                  <div className="col-sm">{Item.ItemName}</div>
+                  <div className="col-sm">{Item.ItemDescription}</div>
+                  <div className="col-sm"><button onClick={() => deleteItem(Item)}>Delete Item</button></div>
+                </div>
+              ))
+            }
+            <div className="row">
+              <div className="col">
+                <input
+                  onChange={e => setFormData({ ...formData, 'ItemName': e.target.value})}
+                  placeholder="Item Name"
+                  value={formData.ItemName}
+                />
+              </div>
+              <div className="col">
+                <input
+                  onChange={e => setFormData({ ...formData, 'ItemDescription': e.target.value})}
+                  placeholder="Item Description"
+                  value={formData.ItemDescription}
+                />
+              </div>
+              <div className="col"><button className="button_create" onClick={createItem}>Create Item</button></div>
+            </div>
+          </div>
           <div>
             <input
               onChange={e => setFormData2({ ...formData2, 'CategoryName': e.target.value})}
@@ -169,29 +208,6 @@ function App() {
               Categories.map(Category => ( //map categories output
                 <div className="categories_output" key={Category.id}>
                 <div>{Category.CategoryName}</div>
-                </div>
-              ))
-            }
-          </div>
-          <div className="items_input">
-            <input
-              onChange={e => setFormData({ ...formData, 'ItemName': e.target.value})}
-              placeholder="Item Name"
-              value={formData.ItemName}
-            />
-            <input
-              onChange={e => setFormData({ ...formData, 'ItemDescription': e.target.value})}
-              placeholder="Item Description"
-              value={formData.ItemDescription}
-            />
-          </div>
-          <button className="button_create" onClick={createItem}>Create Item</button>
-          <div>
-            {
-              Items.map(Item => ( //map items output
-                <div className="items_output" key={Item.id}>
-                <div>{Item.ItemName} {Item.ItemDescription}</div>
-                <button onClick={() => deleteItem(Item)}>Delete Item</button>
                 </div>
               ))
             }
