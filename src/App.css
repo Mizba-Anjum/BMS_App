@@ -186,17 +186,23 @@ img {
   display: flex;
   flex-direction: column;
 }
-#main_content_container table, th, td {
+#main_content_container .outer_table .inner_table {
+  width: 100%;
+}
+#main_content_container .outer_table .inner_table tr:nth-child(even) {
+  background-color: white;
+}
+#main_content_container .outer_table, th, td {
   border: 1px solid #aaa;
 }
-#main_content_container table th {
+#main_content_container .outer_table th {
   font-family:Arial, Helvetica, sans-serif;
   text-align: center;
 }
-#main_content_container table td div {
+#main_content_container .outer_table td div {
   font-weight: 100;
   margin: 1rem;
 }
-#main_content_container table tr:nth-child(odd){
+#main_content_container .outer_table tr:nth-child(odd){
   background-color: #eee;
 }

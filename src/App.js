@@ -186,7 +186,7 @@ function App() {
               {
               Items.map(Item => ( //map items output
                 <div className="items_output" key={Item.id}>
-                <div>{Item.ItemName} {Item.ItemDescription}</div>
+                <div>{Item.ItemName} {Item.ItemDescription} {Item.CategoryAssignment}</div>
                 <button onClick={() => deleteItem(Item)}>Delete Item</button>
                 </div>
               ))
@@ -201,7 +201,7 @@ function App() {
             
             
             
-            <table>
+            <table className='outer_table'>
               <thead>
                 <tr>
                   <th>Category</th>
@@ -212,42 +212,17 @@ function App() {
 
               <tbody>
                 <tr>
-                  <td><div>Category 1</div></td>
-
-                  <td>
-                    <div>Item 1</div>
-                    <div>Item 2</div>
-                    <div>Item 3</div>
-                  </td>
-
-                  <td>
-
-                  </td>
-
+                  <td rowSpan={6}><div>Category 2</div></td>
+                  <td rowSpan={3}><div>Item 2-1</div></td>
+                  <td><div>Attributes 1-1</div></td>
                 </tr>
+                <tr><td><div>Attributes 1-2</div></td></tr>
+                <tr><td><div>Attributes 1-3</div></td></tr>
 
-                <tr>
-                  <td><div>Category 2</div></td>
-                  <td>
-                    <div>Item 2-1</div>
-                    <div>Item 2-2</div>
-                    <div>Item 2-3</div>
-                  </td>
-                  <td>
-                    <div>
-                      <div>Attributes 1-1</div>
-                      <div>Attributes 1-2</div>
-                      <div>Attributes 1-3</div>
-                      <div>Attributes 1-4</div>
-                    </div>
-                    <div>
-                      <div>Attributes 2-1</div>
-                      <div>Attributes 2-2</div>
-                      <div>Attributes 2-3</div>
-                    </div>
-                  </td>
-                    
-                </tr>
+                <tr><td rowSpan={3}><div>Item 2-2</div></td><td><div>Attributes 2-1</div></td></tr>
+                <tr><td><div>Attributes 2-2</div></td></tr>
+                <tr><td><div>Attributes 2-3</div></td></tr>
+
               </tbody>
             </table>
             

@@ -7,38 +7,51 @@ export const onCreateItems = /* GraphQL */ `
       id
       ItemName
       ItemDescription
-      CategoryAssignment {
+      ItemCategory {
         id
         CategoryName
+        CategoryItems {
+          id
+          ItemName
+          ItemDescription
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
-      EventAssignment {
-        items {
+      ItemEvents {
+        id
+        EventName
+        EventDescription
+        StartTime
+        EndTime
+        EventItem {
           id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          itemsID
+          ItemName
+          ItemDescription
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
-      AttributesAssignment {
-        items {
+      ItemAttributes {
+        id
+        AttributeTitle
+        AttributeDesc
+        AttributeItems {
           id
-          AttributeDesc
-          itemsID
+          ItemName
+          ItemDescription
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      itemsCategoryAssignmentId
     }
   }
 `;
@@ -48,38 +61,51 @@ export const onUpdateItems = /* GraphQL */ `
       id
       ItemName
       ItemDescription
-      CategoryAssignment {
+      ItemCategory {
         id
         CategoryName
+        CategoryItems {
+          id
+          ItemName
+          ItemDescription
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
-      EventAssignment {
-        items {
+      ItemEvents {
+        id
+        EventName
+        EventDescription
+        StartTime
+        EndTime
+        EventItem {
           id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          itemsID
+          ItemName
+          ItemDescription
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
-      AttributesAssignment {
-        items {
+      ItemAttributes {
+        id
+        AttributeTitle
+        AttributeDesc
+        AttributeItems {
           id
-          AttributeDesc
-          itemsID
+          ItemName
+          ItemDescription
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      itemsCategoryAssignmentId
     }
   }
 `;
@@ -89,38 +115,51 @@ export const onDeleteItems = /* GraphQL */ `
       id
       ItemName
       ItemDescription
-      CategoryAssignment {
+      ItemCategory {
         id
         CategoryName
+        CategoryItems {
+          id
+          ItemName
+          ItemDescription
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
-      EventAssignment {
-        items {
+      ItemEvents {
+        id
+        EventName
+        EventDescription
+        StartTime
+        EndTime
+        EventItem {
           id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          itemsID
+          ItemName
+          ItemDescription
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
-      AttributesAssignment {
-        items {
+      ItemAttributes {
+        id
+        AttributeTitle
+        AttributeDesc
+        AttributeItems {
           id
-          AttributeDesc
-          itemsID
+          ItemName
+          ItemDescription
           createdAt
           updatedAt
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      itemsCategoryAssignmentId
     }
   }
 `;
@@ -132,7 +171,35 @@ export const onCreateEvents = /* GraphQL */ `
       EventDescription
       StartTime
       EndTime
-      itemsID
+      EventItem {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -146,7 +213,35 @@ export const onUpdateEvents = /* GraphQL */ `
       EventDescription
       StartTime
       EndTime
-      itemsID
+      EventItem {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -160,7 +255,35 @@ export const onDeleteEvents = /* GraphQL */ `
       EventDescription
       StartTime
       EndTime
-      itemsID
+      EventItem {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -173,6 +296,35 @@ export const onCreateCategories = /* GraphQL */ `
     onCreateCategories(filter: $filter) {
       id
       CategoryName
+      CategoryItems {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -185,6 +337,35 @@ export const onUpdateCategories = /* GraphQL */ `
     onUpdateCategories(filter: $filter) {
       id
       CategoryName
+      CategoryItems {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -197,6 +378,35 @@ export const onDeleteCategories = /* GraphQL */ `
     onDeleteCategories(filter: $filter) {
       id
       CategoryName
+      CategoryItems {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -208,8 +418,37 @@ export const onCreateAttributes = /* GraphQL */ `
   ) {
     onCreateAttributes(filter: $filter) {
       id
+      AttributeTitle
       AttributeDesc
-      itemsID
+      AttributeItems {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -221,8 +460,37 @@ export const onUpdateAttributes = /* GraphQL */ `
   ) {
     onUpdateAttributes(filter: $filter) {
       id
+      AttributeTitle
       AttributeDesc
-      itemsID
+      AttributeItems {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -234,8 +502,37 @@ export const onDeleteAttributes = /* GraphQL */ `
   ) {
     onDeleteAttributes(filter: $filter) {
       id
+      AttributeTitle
       AttributeDesc
-      itemsID
+      AttributeItems {
+        id
+        ItemName
+        ItemDescription
+        ItemCategory {
+          id
+          CategoryName
+          createdAt
+          updatedAt
+        }
+        ItemEvents {
+          id
+          EventName
+          EventDescription
+          StartTime
+          EndTime
+          createdAt
+          updatedAt
+        }
+        ItemAttributes {
+          id
+          AttributeTitle
+          AttributeDesc
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

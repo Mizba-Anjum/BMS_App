@@ -6,9 +6,11 @@ type Items @model @auth(rules: [{allow: public}]) {
   id: ID!
   ItemName: String!
   ItemDescription: String
-  CategoryAssignment: Categories @hasOne
-  EventAssignment: [Events] @hasMany(indexName: "byItems", fields: ["id"])
-  AttributesAssignment: [Attributes] @hasMany(indexName: "byItems", fields: ["id"])
+  ItemCategory: Categories!
+  ItemEvents: [Events]
+  ItemAttributes: [Attributes]
+  createdAt: AWSDateTime
+  updatedAt:AWSDateTime
 }
 
 type Events @model @auth(rules: [{allow: public}]) {
@@ -17,16 +19,24 @@ type Events @model @auth(rules: [{allow: public}]) {
   EventDescription: String
   StartTime: String
   EndTime: String
-  itemsID: ID! @index(name: "byItems")
+  EventItem: Items!
+  createdAt: AWSDateTime
+  updatedAt:AWSDateTime
 }
 
 type Categories @model @auth(rules: [{allow: public}]) {
   id: ID!
   CategoryName: String!
+  CategoryItems: [Items]
+  createdAt: AWSDateTime
+  updatedAt:AWSDateTime
 }
 
 type Attributes @model @auth(rules: [{allow: public}]) {
   id: ID!
-  AttributeDesc: String!
-  itemsID: ID! @index(name: "byItems")
+  AttributeTitle: String!
+  AttributeDesc: String
+  AttributeItems: [Items]!
+  createdAt: AWSDateTime
+  updatedAt:AWSDateTime
 }
