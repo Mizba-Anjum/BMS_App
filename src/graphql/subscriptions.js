@@ -26,6 +26,16 @@ export const onCreateItems = /* GraphQL */ `
         }
         nextToken
       }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       itemsCategoryAssignmentId
@@ -57,6 +67,16 @@ export const onUpdateItems = /* GraphQL */ `
         }
         nextToken
       }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       itemsCategoryAssignmentId
@@ -82,6 +102,16 @@ export const onDeleteItems = /* GraphQL */ `
           EventDescription
           StartTime
           EndTime
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
           itemsID
           createdAt
           updatedAt
@@ -167,6 +197,45 @@ export const onDeleteCategories = /* GraphQL */ `
     onDeleteCategories(filter: $filter) {
       id
       CategoryName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAttributes = /* GraphQL */ `
+  subscription OnCreateAttributes(
+    $filter: ModelSubscriptionAttributesFilterInput
+  ) {
+    onCreateAttributes(filter: $filter) {
+      id
+      AttributeDesc
+      itemsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAttributes = /* GraphQL */ `
+  subscription OnUpdateAttributes(
+    $filter: ModelSubscriptionAttributesFilterInput
+  ) {
+    onUpdateAttributes(filter: $filter) {
+      id
+      AttributeDesc
+      itemsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAttributes = /* GraphQL */ `
+  subscription OnDeleteAttributes(
+    $filter: ModelSubscriptionAttributesFilterInput
+  ) {
+    onDeleteAttributes(filter: $filter) {
+      id
+      AttributeDesc
+      itemsID
       createdAt
       updatedAt
     }

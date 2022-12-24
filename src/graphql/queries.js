@@ -26,6 +26,16 @@ export const getItems = /* GraphQL */ `
         }
         nextToken
       }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       itemsCategoryAssignmentId
@@ -50,6 +60,9 @@ export const listItems = /* GraphQL */ `
           updatedAt
         }
         EventAssignment {
+          nextToken
+        }
+        AttributesAssignment {
           nextToken
         }
         createdAt
@@ -122,6 +135,35 @@ export const listCategories = /* GraphQL */ `
     }
   }
 `;
+export const getAttributes = /* GraphQL */ `
+  query GetAttributes($id: ID!) {
+    getAttributes(id: $id) {
+      id
+      AttributeDesc
+      itemsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAttributes = /* GraphQL */ `
+  query ListAttributes(
+    $filter: ModelAttributesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAttributes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        AttributeDesc
+        itemsID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const eventsByItemsID = /* GraphQL */ `
   query EventsByItemsID(
     $itemsID: ID!
@@ -143,6 +185,32 @@ export const eventsByItemsID = /* GraphQL */ `
         EventDescription
         StartTime
         EndTime
+        itemsID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const attributesByItemsID = /* GraphQL */ `
+  query AttributesByItemsID(
+    $itemsID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAttributesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    attributesByItemsID(
+      itemsID: $itemsID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        AttributeDesc
         itemsID
         createdAt
         updatedAt

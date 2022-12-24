@@ -8,6 +8,7 @@ type Items @model @auth(rules: [{allow: public}]) {
   ItemDescription: String
   CategoryAssignment: Categories @hasOne
   EventAssignment: [Events] @hasMany(indexName: "byItems", fields: ["id"])
+  AttributesAssignment: [Attributes] @hasMany(indexName: "byItems", fields: ["id"])
 }
 
 type Events @model @auth(rules: [{allow: public}]) {
@@ -22,4 +23,10 @@ type Events @model @auth(rules: [{allow: public}]) {
 type Categories @model @auth(rules: [{allow: public}]) {
   id: ID!
   CategoryName: String!
+}
+
+type Attributes @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  AttributeDesc: String!
+  itemsID: ID! @index(name: "byItems")
 }

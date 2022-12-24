@@ -29,6 +29,16 @@ export const createItems = /* GraphQL */ `
         }
         nextToken
       }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       itemsCategoryAssignmentId
@@ -63,6 +73,16 @@ export const updateItems = /* GraphQL */ `
         }
         nextToken
       }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       itemsCategoryAssignmentId
@@ -91,6 +111,16 @@ export const deleteItems = /* GraphQL */ `
           EventDescription
           StartTime
           EndTime
+          itemsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      AttributesAssignment {
+        items {
+          id
+          AttributeDesc
           itemsID
           createdAt
           updatedAt
@@ -188,6 +218,48 @@ export const deleteCategories = /* GraphQL */ `
     deleteCategories(input: $input, condition: $condition) {
       id
       CategoryName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAttributes = /* GraphQL */ `
+  mutation CreateAttributes(
+    $input: CreateAttributesInput!
+    $condition: ModelAttributesConditionInput
+  ) {
+    createAttributes(input: $input, condition: $condition) {
+      id
+      AttributeDesc
+      itemsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAttributes = /* GraphQL */ `
+  mutation UpdateAttributes(
+    $input: UpdateAttributesInput!
+    $condition: ModelAttributesConditionInput
+  ) {
+    updateAttributes(input: $input, condition: $condition) {
+      id
+      AttributeDesc
+      itemsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAttributes = /* GraphQL */ `
+  mutation DeleteAttributes(
+    $input: DeleteAttributesInput!
+    $condition: ModelAttributesConditionInput
+  ) {
+    deleteAttributes(input: $input, condition: $condition) {
+      id
+      AttributeDesc
+      itemsID
       createdAt
       updatedAt
     }
