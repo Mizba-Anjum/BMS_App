@@ -85,13 +85,13 @@ img {
   height: 100%;
   border-right: 1px solid rgb(218, 211, 219);
 }
-#sidebar h5 {
-  margin: 10px;
-}
 #sidebar .sidebar_section {
   margin: 10px;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgb(218, 211, 219);
+}
+#sidebar .sidebar_section .h8 {
+  font-size: 1rem;
 }
 #sidebar .search_bar input {
   width: 100%;
@@ -119,6 +119,7 @@ img {
   text-align: left;
   background-color: #eee;
 }
+
 #main_content_container table, th, td {
   border-bottom: 1px solid #aaa;
 }
@@ -127,12 +128,34 @@ img {
   font-family: Trebuchet MS, sans-serif;
   text-align: left;
 }
+#main_content_container table th div {
+  display: inline-block;
+}
+#main_content_container table th .menu_btns {
+  position: relative;
+  left: calc(100% - 250px);
+}
+#main_content_container table .menu_btns button {
+  display: inline;
+  background-color: white;
+  border: 2px solid #ccc;
+  color: rgb(90, 90, 90);
+  border-radius: 10px;
+  padding: .5rem;
+  margin: .5rem;
+}
 #main_content_container table td div {
   font-weight: 100;
   margin: 1rem;
 }
-#main_content_container table tr:nth-child(odd){
-  background-color: #eee;
+#main_content_container table tbody tr, .category_td{
+  transition: .2s;
+}
+#main_content_container table tbody:hover .category_td{
+  background-color: #ddd;
+}
+#main_content_container table tbody tr:hover {
+  background-color: #ddd;
 }
 
 #main_content_container table .events_container {
@@ -144,6 +167,9 @@ img {
   border-radius: 15px;
   padding: .5rem;
   text-align: center;
+}
+#main_content_container table .events_container div:hover {
+  background-color: #eee;
 }
 #main_content_container table .events_container div p:nth-child(1){
   background-color: rgb(241, 214, 233);

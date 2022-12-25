@@ -6,7 +6,7 @@ type Items @model @auth(rules: [{allow: public}]) {
   id: ID!
   ItemName: String!
   ItemDescription: String
-  ItemCategory: Categories!
+  ItemCategory: Categories
   ItemEvents: [Events]
   ItemAttributes: [Attributes]
   createdAt: AWSDateTime
@@ -19,7 +19,7 @@ type Events @model @auth(rules: [{allow: public}]) {
   EventDescription: String
   StartTime: String
   EndTime: String
-  EventItem: Items!
+  EventItem: [Items]!
   createdAt: AWSDateTime
   updatedAt:AWSDateTime
 }

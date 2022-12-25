@@ -154,11 +154,35 @@ function App() {
 
       <div id="main_container">
         <div id="sidebar">
-          <h5>Filter</h5>
-          <div className="sidebar_section search_bar"><input type="text" placeholder="Search..."></input></div>
-          <div className='sidebar_section'></div>
-          
+
+          <div className="sidebar_section"><h5>Filter</h5></div>
+
+          <div className='sidebar_section'>
+            <p className='h8'>Categories</p>
+            <div><p></p></div>
+            <div className="search_bar"><input type="text" placeholder="Search..."></input></div>
+          </div>
+
+          <div className='sidebar_section'>
+            <p className='h8'>Tags</p>
+            <div><p></p></div>
+            <div className="search_bar"><input type="text" placeholder="Search..."></input></div>
+          </div>
+
+          <div>
+            {
+              Items.map(Item => ( //map items output
+                <div className="items_output row" key={Item.id}>
+                  <div className="col">{Item.ItemName}</div>
+                  <div className="col">{Item.ItemDescription}</div>
+                  <div className="col"><button onClick={() => deleteItem(Item)}>Delete Item</button></div>
+                </div>
+              ))
+            }
+          </div>
+
         </div>
+
         <div id="main_content">
           <div id="main_content_container">
             <div className="items_head"></div>
@@ -168,12 +192,13 @@ function App() {
             <table className='outer_table'>
               <thead>
                 <tr>
-                  <th>Category <svg width="20" height="20" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <line x1='0' y1='60' x2='120' y2='60' stroke='black' />
-                  <line x1='60' y1='0' x2='60' y2='120' stroke='black' />
-                </svg></th>
+                  <th>Category</th>
                   <th>Items</th>
-                  <th>Events</th>
+                  <th><div>Events</div>
+                  <div className="menu_btns">
+                    <button>Sort By</button>
+                    <button>Add</button>
+                  </div></th>
                 </tr>
               </thead>
 
@@ -181,10 +206,38 @@ function App() {
 
               {
               Categories.map(Category => ( //map categories output
-              <tbody className="categories_output" key={Category.id}>
+                <tbody className="categories_output" key={Category.id}>
+                
+                  <tr>
+                    <td rowSpan={2} className="category_td"><div>{Category.CategoryName}</div></td>
+
+                    <td className='item_td'><div>Item 2-1</div></td>
+                    <td>
+                      <div className='events_container'>
+                      <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
+                      <div>Attributes 1-2</div>
+                      <div>Attributes 1-3</div></div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className='item_td'><div>Item 2-1</div></td>
+                    <td>
+                      <div className='events_container'>
+                      <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
+                      <div>Attributes 2-2</div>
+                      <div>Attributes 2-3</div></div>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              ))
+            }
+
+              <tbody className="categories_output">
                 
                 <tr>
-                  <td rowSpan={2} className="category_td"><div>{Category.CategoryName}</div></td>
+                  <td rowSpan={2} className="category_td"><div><i>No Category</i></div></td>
 
                   <td className='item_td'><div>Item 2-1</div></td>
                   <td>
@@ -205,8 +258,6 @@ function App() {
                   </td>
                 </tr>
                 </tbody>
-              ))
-            }
                 
                
             </table>
