@@ -4,7 +4,7 @@ import * as queries from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import './App.css';
 
-const initialFormState = { ItemName: "", ItemDescription: ""}; //item form input
+const initialFormState = { ItemName: "", ItemDescription: "", ItemCategory: {}}; //item form input
 const initialFormState2 = { CategoryName: ""}; //category form input
 const initialFormState3 = { EventName: "", itemsID: ""}; //event form input
 
@@ -154,76 +154,61 @@ function App() {
 
       <div id="main_container">
         <div id="sidebar">
-          <div id="search_bar"><input type="text" placeholder="Search..."></input></div>
-          <ul>
-            
-            <li className="list active"><a href="#">Category 1</a></li>
-            <li className="list"><a href="#">Category 2</a></li>
-
-            {
-              Categories.map(Category => ( //map categories output
-              <li className="list"><a href="#"><div className="categories_output" key={Category.id}>
-                <div>{Category.CategoryName}</div>
-                </div></a></li>
-              ))
-            }
-
-            <li className="add_category_input">
-              <input
-                  onChange={e => setFormData2({ ...formData2, 'CategoryName': e.target.value})}
-                  placeholder="Add Category"
-                  value={formData2.CategoryName}
-                />
-              <button className="button_create" onClick={createCategory}>
-                <svg width="20" height="20" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <line x1='0' y1='60' x2='120' y2='60' stroke='black' />
-                  <line x1='60' y1='0' x2='60' y2='120' stroke='black' />
-                </svg>
-              </button>
-            </li>
-            
-            <div>
-              {
-              Items.map(Item => ( //map items output
-                <div className="items_output" key={Item.id}>
-                <div>{Item.ItemName} {Item.ItemDescription} {Item.CategoryAssignment}</div>
-                <button onClick={() => deleteItem(Item)}>Delete Item</button>
-                </div>
-              ))
-            }
-            </div>
-
-          </ul>
+          <h5>Filter</h5>
+          <div className="sidebar_section search_bar"><input type="text" placeholder="Search..."></input></div>
+          <div className='sidebar_section'></div>
+          
         </div>
         <div id="main_content">
           <div id="main_content_container">
-            <div className="items_head"><h3>Category 1  Items</h3></div>
+            <div className="items_head"></div>
             
             
             
             <table className='outer_table'>
               <thead>
                 <tr>
-                  <th>Category</th>
+                  <th>Category <svg width="20" height="20" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                  <line x1='0' y1='60' x2='120' y2='60' stroke='black' />
+                  <line x1='60' y1='0' x2='60' y2='120' stroke='black' />
+                </svg></th>
                   <th>Items</th>
-                  <th>Attributes</th>
+                  <th>Events</th>
                 </tr>
               </thead>
 
-              <tbody>
+              
+
+              {
+              Categories.map(Category => ( //map categories output
+              <tbody className="categories_output" key={Category.id}>
+                
                 <tr>
-                  <td rowSpan={6}><div>Category 2</div></td>
-                  <td rowSpan={3}><div>Item 2-1</div></td>
-                  <td><div>Attributes 1-1</div></td>
+                  <td rowSpan={2} className="category_td"><div>{Category.CategoryName}</div></td>
+
+                  <td className='item_td'><div>Item 2-1</div></td>
+                  <td>
+                    <div className='events_container'>
+                    <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
+                    <div>Attributes 1-2</div>
+                    <div>Attributes 1-3</div></div>
+                  </td>
                 </tr>
-                <tr><td><div>Attributes 1-2</div></td></tr>
-                <tr><td><div>Attributes 1-3</div></td></tr>
 
-                <tr><td rowSpan={3}><div>Item 2-2</div></td><td><div>Attributes 2-1</div></td></tr>
-                <tr><td><div>Attributes 2-2</div></td></tr>
-                <tr><td><div>Attributes 2-3</div></td></tr>
-
-              </tbody>
+                <tr>
+                  <td className='item_td'><div>Item 2-1</div></td>
+                  <td>
+                    <div className='events_container'>
+                    <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
+                    <div>Attributes 2-2</div>
+                    <div>Attributes 2-3</div></div>
+                  </td>
+                </tr>
+                </tbody>
+              ))
+            }
+                
+               
             </table>
             
           </div>
