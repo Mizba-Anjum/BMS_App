@@ -18,7 +18,6 @@ function App() {
   const [Events, setEvents] = useState([]); //events array
   const [formData3, setFormData3] = useState(initialFormState3); //form data (form 3: events)
 
-
   //fetch items
   useEffect( () => {
     fetchItems();
@@ -141,6 +140,29 @@ function App() {
     list.forEach((item) =>
     item.addEventListener('click', activeLink));
   
+    //item input
+    function createItemInput(e, currentCategory) {
+      e.preventDefault();
+      var iname = e.target.itemName.value;
+      setFormData({ ...formData, 'ItemName': iname, 'ItemCategory': currentCategory});
+      console.log(formData);
+      console.log(iname, currentCategory);
+      createItem();
+    }
+    function returnFormData() {
+      console.log(formData);
+    }
+    function returnFirstItem(currentCategory) {
+      var filteredItem = Items.filter(Item => Item.ItemCategory === (currentCategory))[0];
+      if (filteredItem) {
+        return(
+        <td className='item_td'><div>{filteredItem.ItemName}</div></td>)
+      }
+      else {
+        return;
+      }
+    }
+
   return (
     <React.Fragment>
       <div id="topbar">
@@ -174,7 +196,7 @@ function App() {
               Items.map(Item => ( //map items output
                 <div className="items_output row" key={Item.id}>
                   <div className="col">{Item.ItemName}</div>
-                  <div className="col">{Item.ItemDescription}</div>
+                  <div className="col">{Item.ItemCategory.CategoryName}</div>
                   <div className="col"><button onClick={() => deleteItem(Item)}>Delete Item</button></div>
                 </div>
               ))
@@ -211,22 +233,33 @@ function App() {
                   <tr>
                     <td rowSpan={2} className="category_td"><div>{Category.CategoryName}</div></td>
 
-                    <td className='item_td'><div>Item 2-1</div></td>
-                    <td>
-                      <div className='events_container'>
-                      <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
-                      <div>Attributes 1-2</div>
-                      <div>Attributes 1-3</div></div>
-                    </td>
+                    {returnFirstItem(Category)}
+                    
+
                   </tr>
 
                   <tr>
-                    <td className='item_td'><div>Item 2-1</div></td>
+
+                    <td className='item_td'>
+                      <div className='new_item'>
+                        <form onSubmit={(e) => createItemInput(e, Category)}>
+                          <div className='item_input'> 
+                          <input type="text" name="itemName" placeholder="New Item"/>
+                          </div>
+                          
+                          <button type="submit" id = "newItemButton">
+                            <svg width="30" height="30" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                              <line x1='0' y1='60' x2='120' y2='60' stroke='black' />
+                              <line x1='60' y1='0' x2='60' y2='120' stroke='black' />
+                            </svg>
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+
                     <td>
                       <div className='events_container'>
-                      <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
-                      <div>Attributes 2-2</div>
-                      <div>Attributes 2-3</div></div>
+                      </div>
                     </td>
                   </tr>
                   

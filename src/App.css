@@ -148,11 +148,29 @@ img {
   font-weight: 100;
   margin: 1rem;
 }
-#main_content_container table tbody tr, .category_td{
+#main_content_container table tbody tr, .category_td {
   transition: .2s;
 }
-#main_content_container table tbody:hover .category_td{
+#main_content_container table tbody:hover .category_td {
   background-color: #ddd;
+}
+#main_content_container table tbody .item_td .new_item {
+  display: flex;
+}
+#main_content_container table tbody .item_td .new_item .item_input {
+  display: inline-block;
+  width: 90px;
+  height: 20px;
+}
+#main_content_container table tbody .item_td .new_item .item_input input {
+  padding: .1rem;
+  width: 100%;
+}
+#main_content_container table tbody .item_td .new_item button {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  padding-top: .5rem;
 }
 #main_content_container table tbody tr:hover {
   background-color: #ddd;

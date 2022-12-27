@@ -2,7 +2,7 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Items @model @auth(rules: [{allow: public}]) {
+type Items @model {
   id: ID!
   ItemName: String!
   ItemDescription: String
@@ -13,7 +13,7 @@ type Items @model @auth(rules: [{allow: public}]) {
   updatedAt:AWSDateTime
 }
 
-type Events @model @auth(rules: [{allow: public}]) {
+type Events @model {
   id: ID!
   EventName: String!
   EventDescription: String
@@ -24,7 +24,7 @@ type Events @model @auth(rules: [{allow: public}]) {
   updatedAt:AWSDateTime
 }
 
-type Categories @model @auth(rules: [{allow: public}]) {
+type Categories @model {
   id: ID!
   CategoryName: String!
   CategoryItems: [Items]
@@ -32,7 +32,7 @@ type Categories @model @auth(rules: [{allow: public}]) {
   updatedAt:AWSDateTime
 }
 
-type Attributes @model @auth(rules: [{allow: public}]) {
+type Attributes @model {
   id: ID!
   AttributeTitle: String!
   AttributeDesc: String
