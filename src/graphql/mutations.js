@@ -13,46 +13,11 @@ export const createItems = /* GraphQL */ `
       ItemCategory {
         id
         CategoryName
-        CategoryItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
-      ItemEvents {
-        id
-        EventName
-        EventDescription
-        StartTime
-        EndTime
-        EventItem {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      ItemAttributes {
-        id
-        AttributeTitle
-        AttributeDesc
-        AttributeItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -70,46 +35,11 @@ export const updateItems = /* GraphQL */ `
       ItemCategory {
         id
         CategoryName
-        CategoryItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
-      ItemEvents {
-        id
-        EventName
-        EventDescription
-        StartTime
-        EndTime
-        EventItem {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      ItemAttributes {
-        id
-        AttributeTitle
-        AttributeDesc
-        AttributeItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -127,181 +57,11 @@ export const deleteItems = /* GraphQL */ `
       ItemCategory {
         id
         CategoryName
-        CategoryItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
-      ItemEvents {
-        id
-        EventName
-        EventDescription
-        StartTime
-        EndTime
-        EventItem {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      ItemAttributes {
-        id
-        AttributeTitle
-        AttributeDesc
-        AttributeItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createEvents = /* GraphQL */ `
-  mutation CreateEvents(
-    $input: CreateEventsInput!
-    $condition: ModelEventsConditionInput
-  ) {
-    createEvents(input: $input, condition: $condition) {
-      id
-      EventName
-      EventDescription
-      StartTime
-      EndTime
-      EventItem {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateEvents = /* GraphQL */ `
-  mutation UpdateEvents(
-    $input: UpdateEventsInput!
-    $condition: ModelEventsConditionInput
-  ) {
-    updateEvents(input: $input, condition: $condition) {
-      id
-      EventName
-      EventDescription
-      StartTime
-      EndTime
-      EventItem {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteEvents = /* GraphQL */ `
-  mutation DeleteEvents(
-    $input: DeleteEventsInput!
-    $condition: ModelEventsConditionInput
-  ) {
-    deleteEvents(input: $input, condition: $condition) {
-      id
-      EventName
-      EventDescription
-      StartTime
-      EndTime
-      EventItem {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -315,35 +75,6 @@ export const createCategories = /* GraphQL */ `
     createCategories(input: $input, condition: $condition) {
       id
       CategoryName
-      CategoryItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -357,35 +88,6 @@ export const updateCategories = /* GraphQL */ `
     updateCategories(input: $input, condition: $condition) {
       id
       CategoryName
-      CategoryItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -399,164 +101,6 @@ export const deleteCategories = /* GraphQL */ `
     deleteCategories(input: $input, condition: $condition) {
       id
       CategoryName
-      CategoryItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createAttributes = /* GraphQL */ `
-  mutation CreateAttributes(
-    $input: CreateAttributesInput!
-    $condition: ModelAttributesConditionInput
-  ) {
-    createAttributes(input: $input, condition: $condition) {
-      id
-      AttributeTitle
-      AttributeDesc
-      AttributeItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateAttributes = /* GraphQL */ `
-  mutation UpdateAttributes(
-    $input: UpdateAttributesInput!
-    $condition: ModelAttributesConditionInput
-  ) {
-    updateAttributes(input: $input, condition: $condition) {
-      id
-      AttributeTitle
-      AttributeDesc
-      AttributeItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAttributes = /* GraphQL */ `
-  mutation DeleteAttributes(
-    $input: DeleteAttributesInput!
-    $condition: ModelAttributesConditionInput
-  ) {
-    deleteAttributes(input: $input, condition: $condition) {
-      id
-      AttributeTitle
-      AttributeDesc
-      AttributeItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }

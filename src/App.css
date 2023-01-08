@@ -114,81 +114,37 @@ img {
   display: flex;
   flex-direction: column;
 }
-#main_content_container .items_head {
-  font-family:Arial, Helvetica, sans-serif;
-  text-align: left;
-  background-color: #eee;
-}
 
-#main_content_container table, th, td {
-  border-bottom: 1px solid #aaa;
-}
-#main_content_container table th {
-  padding: 1rem 0 1rem 1rem;
-  font-family: Trebuchet MS, sans-serif;
-  text-align: left;
-}
-#main_content_container table th div {
-  display: inline-block;
-}
-#main_content_container table th .menu_btns {
-  position: relative;
-  left: calc(100% - 250px);
-}
-#main_content_container table .menu_btns button {
-  display: inline;
-  background-color: white;
-  border: 2px solid #ccc;
-  color: rgb(90, 90, 90);
-  border-radius: 10px;
-  padding: .5rem;
-  margin: .5rem;
-}
-#main_content_container table td div {
-  font-weight: 100;
+
+.categories_output {
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
   margin: 1rem;
 }
-#main_content_container table tbody tr, .category_td {
-  transition: .2s;
-}
-#main_content_container table tbody:hover .category_td {
-  background-color: #ddd;
-}
-#main_content_container table tbody .item_td .new_item {
-  display: flex;
-}
-#main_content_container table tbody .item_td .new_item .item_input {
-  display: inline-block;
-  width: 90px;
-  height: 20px;
-}
-#main_content_container table tbody .item_td .new_item .item_input input {
-  padding: .1rem;
-  width: 100%;
-}
-#main_content_container table tbody .item_td .new_item button {
-  display: inline-block;
-  background-color: transparent;
-  border: none;
-  padding-top: .5rem;
-}
-#main_content_container table tbody tr:hover {
-  background-color: #ddd;
+.categories_output .category_header {
+  border-bottom: 1px solid rgb(238, 238, 238);
+  padding: 1rem;
 }
 
-#main_content_container table .events_container {
-  display: flex;
-}
-#main_content_container table .events_container div {
-  border: 1px solid #ccc;
-  background-color: white;
-  border-radius: 15px;
+.categories_output .items_output {
   padding: .5rem;
-  text-align: center;
 }
-#main_content_container table .events_container div:hover {
-  background-color: #eee;
+
+.categories_output .new_item {
+  padding: 1rem;
 }
-#main_content_container table .events_container div p:nth-child(1){
-  background-color: rgb(241, 214, 233);
+.categories_output .new_item .item_input {
+  display: inline-block;
+}
+.categories_output .new_item .item_input input {
+  padding: .5rem;
+  border: none;
+  width: 90px;
+}
+.categories_output .new_item .item_input input:focus {
+  border: 1px solid rgb(167, 167, 167);
+}
+.categories_output .new_item button {
+  border: none;
+  background-color: transparent;
+  margin-left: 1rem;
 }

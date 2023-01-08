@@ -146,30 +146,42 @@ function App() {
       var iname = e.target.itemName.value;
       setFormData({ ...formData, 'ItemName': iname, 'ItemCategory': currentCategory});
       console.log(formData);
-      console.log(iname, currentCategory);
       createItem();
     }
     function returnFormData() {
       console.log(formData);
     }
-    function returnFirstItem(currentCategory) {
-      var filteredItem = Items.filter(Item => Item.ItemCategory === (currentCategory))[0];
-      if (filteredItem) {
-        return(
-        <td className='item_td'><div>{filteredItem.ItemName}</div></td>)
+    function returnCategoryItems(item, currentCategory) {
+      if (item.ItemCategory) {
+        if (item.ItemCategory.id === currentCategory.id) {
+          return (
+            <div className='items_output'>{item.ItemName} {item.ItemCategory.CategoryName}</div>
+          )
+        }
+        else {
+          return;
+        }
       }
       else {
         return;
       }
     }
 
+    //return functions
+    function returnItemCategoryName(Item) {
+      if (Item.ItemCategory) {
+        return Item.ItemCategory.CategoryName;
+      }
+      else {
+        return <i>No Category</i>;
+      }
+    }
   return (
     <React.Fragment>
       <div id="topbar">
         <ul>
           <li className="list active"><a href="#">Overview</a></li>
           <li className="list"><a href="#">Database</a></li>
-          <li className="list"><a href="#">Tags</a></li>
           <li className="list"><a href="#">Calendar</a></li>
         </ul>
       </div>
@@ -185,115 +197,78 @@ function App() {
             <div className="search_bar"><input type="text" placeholder="Search..."></input></div>
           </div>
 
-          <div className='sidebar_section'>
-            <p className='h8'>Tags</p>
-            <div><p></p></div>
-            <div className="search_bar"><input type="text" placeholder="Search..."></input></div>
-          </div>
-
-          <div>
-            {
-              Items.map(Item => ( //map items output
-                <div className="items_output row" key={Item.id}>
-                  <div className="col">{Item.ItemName}</div>
-                  <div className="col">{Item.ItemCategory.CategoryName}</div>
-                  <div className="col"><button onClick={() => deleteItem(Item)}>Delete Item</button></div>
-                </div>
-              ))
-            }
-          </div>
+          
 
         </div>
 
         <div id="main_content">
           <div id="main_content_container">
-            <div className="items_head"></div>
             
             
             
-            <table className='outer_table'>
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Items</th>
-                  <th><div>Events</div>
-                  <div className="menu_btns">
-                    <button>Sort By</button>
-                    <button>Add</button>
-                  </div></th>
-                </tr>
-              </thead>
 
               
 
               {
               Categories.map(Category => ( //map categories output
-                <tbody className="categories_output" key={Category.id}>
+                <div className="categories_output" key={Category.id}>
                 
-                  <tr>
-                    <td rowSpan={2} className="category_td"><div>{Category.CategoryName}</div></td>
-
-                    {returnFirstItem(Category)}
+                  
+                    <div className="category_header">{Category.CategoryName}</div>
                     
-
-                  </tr>
-
-                  <tr>
-
-                    <td className='item_td'>
+                    {
+                      Items.map(Item => ( //map items output
+                        <div key={Item.id}>
+                          {returnCategoryItems(Item, Category)}
+                        </div>
+                      ))
+                    }
+                    
+                    
                       <div className='new_item'>
                         <form onSubmit={(e) => createItemInput(e, Category)}>
                           <div className='item_input'> 
                           <input type="text" name="itemName" placeholder="New Item"/>
                           </div>
                           
-                          <button type="submit" id = "newItemButton">
-                            <svg width="30" height="30" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                          <button type="submit" id="newItemButton">
+                            <svg width="20" height="20" viewBox="0 0 120 130" version="1.1" xmlns="http://www.w3.org/2000/svg">
                               <line x1='0' y1='60' x2='120' y2='60' stroke='black' />
                               <line x1='60' y1='0' x2='60' y2='120' stroke='black' />
                             </svg>
                           </button>
                         </form>
                       </div>
-                    </td>
-
-                    <td>
-                      <div className='events_container'>
-                      </div>
-                    </td>
-                  </tr>
                   
-                </tbody>
+                </div>
               ))
             }
 
-              <tbody className="categories_output">
+              <div className="categories_output">
                 
-                <tr>
-                  <td rowSpan={2} className="category_td"><div><i>No Category</i></div></td>
+                <div><i>No Category</i></div>
 
-                  <td className='item_td'><div>Item 2-1</div></td>
-                  <td>
+                  <div>Item 2-1</div>
+                  
                     <div className='events_container'>
                     <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
                     <div>Attributes 1-2</div>
                     <div>Attributes 1-3</div></div>
-                  </td>
-                </tr>
+                  
+                
 
-                <tr>
-                  <td className='item_td'><div>Item 2-1</div></td>
-                  <td>
+                
+                  <div>Item 2-1</div>
+                 
                     <div className='events_container'>
                     <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
                     <div>Attributes 2-2</div>
                     <div>Attributes 2-3</div></div>
-                  </td>
-                </tr>
-                </tbody>
+                  
+                
+                </div>
                 
                
-            </table>
             
           </div>
         </div>

@@ -10,46 +10,11 @@ export const getItems = /* GraphQL */ `
       ItemCategory {
         id
         CategoryName
-        CategoryItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
-      ItemEvents {
-        id
-        EventName
-        EventDescription
-        StartTime
-        EndTime
-        EventItem {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      ItemAttributes {
-        id
-        AttributeTitle
-        AttributeDesc
-        AttributeItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -72,91 +37,8 @@ export const listItems = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getEvents = /* GraphQL */ `
-  query GetEvents($id: ID!) {
-    getEvents(id: $id) {
-      id
-      EventName
-      EventDescription
-      StartTime
-      EndTime
-      EventItem {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listEvents = /* GraphQL */ `
-  query ListEvents(
-    $filter: ModelEventsFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listEvents(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        EventName
-        EventDescription
-        StartTime
-        EndTime
-        EventItem {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
+        StartDate
+        EndDate
         createdAt
         updatedAt
       }
@@ -169,35 +51,6 @@ export const getCategories = /* GraphQL */ `
     getCategories(id: $id) {
       id
       CategoryName
-      CategoryItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -213,78 +66,6 @@ export const listCategories = /* GraphQL */ `
       items {
         id
         CategoryName
-        CategoryItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getAttributes = /* GraphQL */ `
-  query GetAttributes($id: ID!) {
-    getAttributes(id: $id) {
-      id
-      AttributeTitle
-      AttributeDesc
-      AttributeItems {
-        id
-        ItemName
-        ItemDescription
-        ItemCategory {
-          id
-          CategoryName
-          createdAt
-          updatedAt
-        }
-        ItemEvents {
-          id
-          EventName
-          EventDescription
-          StartTime
-          EndTime
-          createdAt
-          updatedAt
-        }
-        ItemAttributes {
-          id
-          AttributeTitle
-          AttributeDesc
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listAttributes = /* GraphQL */ `
-  query ListAttributes(
-    $filter: ModelAttributesFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAttributes(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        AttributeTitle
-        AttributeDesc
-        AttributeItems {
-          id
-          ItemName
-          ItemDescription
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
