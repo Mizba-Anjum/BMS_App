@@ -6,6 +6,9 @@ input CreateItemsInput {
   ItemName: String!
   ItemDescription: String
   ItemCategory: CategoriesInput
+  Status: String
+  StartDate: String
+  EndDate: String
 }
 
 type Items @model {

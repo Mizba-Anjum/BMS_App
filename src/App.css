@@ -121,30 +121,38 @@ img {
   margin: 1rem;
 }
 .categories_output .category_header {
+  padding: 1rem 1rem 0 1rem;
+}
+.categories_output .column_headers {
+  margin: auto;
   border-bottom: 1px solid rgb(238, 238, 238);
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 .categories_output .items_output {
-  padding: .5rem;
+  padding: .5rem 0;
+  margin: auto;
 }
 
-.categories_output .new_item {
-  padding: 1rem;
-}
-.categories_output .new_item .item_input {
-  display: inline-block;
-}
+
 .categories_output .new_item .item_input input {
   padding: .5rem;
-  border: none;
-  width: 90px;
+  text-align: center;
 }
 .categories_output .new_item .item_input input:focus {
-  border: 1px solid rgb(167, 167, 167);
+  border: none;
+}
+.categories_output .new_item .item_status select {
+  padding: .5rem;
+  text-align: center;
 }
 .categories_output .new_item button {
-  border: none;
+  padding: .5rem;
   background-color: transparent;
-  margin-left: 1rem;
+}
+.categories_output .new_item.active {
+  visibility: visible;
+}
+.categories_output .new_item.inactive {
+  visibility: hidden;
 }

@@ -13,6 +13,7 @@ export const getItems = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      Status
       StartDate
       EndDate
       createdAt
@@ -37,6 +38,7 @@ export const listItems = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        Status
         StartDate
         EndDate
         createdAt

@@ -13,6 +13,7 @@ export const onCreateItems = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      Status
       StartDate
       EndDate
       createdAt
@@ -32,6 +33,7 @@ export const onUpdateItems = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      Status
       StartDate
       EndDate
       createdAt
@@ -51,6 +53,7 @@ export const onDeleteItems = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      Status
       StartDate
       EndDate
       createdAt

@@ -103,23 +103,37 @@ function App() {
     }
     list.forEach((item) =>
     item.addEventListener('click', activeLink));
-  
+  function createNewItemInputVisible() {
+  }
     //item input
+    const current = new Date();
+    const date = `${current.getMonth()}/${current.getDate()}/${current.getFullYear()}`;
     function createItemInput(e, currentCategory) {
       e.preventDefault();
       var iname = e.target.itemName.value;
-      setFormData({ ...formData, 'ItemName': iname, 'ItemCategory': currentCategory});
+      var idesc = e.target.itemDesc.value;
+      var istatus = e.target.itemStatus.value;
+      var idate = e.target.itemDate.value;
+      setFormData({ ...formData, 'ItemName': iname, 'ItemDescription': idesc, 'ItemCategory': currentCategory, 'Status': istatus, 'StartDate': date,'EndDate': idate});
       console.log(formData);
       createItem();
     }
     function returnFormData() {
       console.log(formData);
     }
+
+    //return functions
     function returnCategoryItems(item, currentCategory) {
       if (item.ItemCategory) {
         if (item.ItemCategory.id === currentCategory.id) {
           return (
-            <div className='items_output'>{item.ItemName} {item.ItemCategory.CategoryName}</div>
+            <div className='items_output row'>
+              <div className="col-sm text-center">{item.ItemName}</div>
+              <div className="col-sm text-center">{item.ItemDescription}</div>
+              <div className="col-sm text-center">{item.Status}</div>
+              <div className="col-sm text-center">{item.EndDate}</div>
+              <div className="col-sm-1 order-last"></div>
+            </div>
           )
         }
         else {
@@ -130,8 +144,22 @@ function App() {
         return;
       }
     }
-
-    //return functions
+    function returnNullCategoryItems(item) {
+      if (item.ItemCategory === null) {
+        return (
+          <div className='items_output row'>
+            <div className="col-sm text-center">{item.ItemName}</div>
+            <div className="col-sm text-center">{item.ItemDescription}</div>
+            <div className="col-sm text-center">{item.Status}</div>
+            <div className="col-sm text-center">{item.EndDate}</div>
+            <div className="col-sm-1 order-last"></div>
+          </div>
+        )
+      }
+      else {
+        return;
+      }
+    }
     function returnItemCategoryName(Item) {
       if (Item.ItemCategory) {
         return Item.ItemCategory.CategoryName;
@@ -176,9 +204,48 @@ function App() {
               {
               Categories.map(Category => ( //map categories output
                 <div className="categories_output" key={Category.id}>
-                
                   
-                    <div className="category_header">{Category.CategoryName}</div>
+                    <div className="category_header d-flex justify-content-between">
+                      <div>{Category.CategoryName}</div>
+                      <div>
+                        <button onClick={createNewItemInputVisible()}>
+                        <svg className="feather feather-plus-square" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+                        </button>
+                        <svg className="feather feather-edit" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                      </div>
+                      
+                    </div>
+
+                    <div className="row column_headers">
+                      <div className="col-sm text-center">Task</div>
+                      <div className="col-sm text-center">Description</div>
+                      <div className="col-sm text-center">Status</div>
+                      <div className="col-sm text-center">Deadline</div>
+                      <div className="col-sm-1 order-last"></div>
+                    </div>
+
+                    <div className="new_item active">
+                      <form onSubmit={(e) => createItemInput(e, Category)}>
+                        <div className='items_output text-center row'>
+                            <div className='item_input col-sm'>
+                              <input type="text" name="itemName" placeholder="Item Name" required/>
+                            </div>
+                            <div className='item_input col-sm'>
+                              <input type="text" name="itemDesc" placeholder="Item Description"/>
+                            </div>
+                            <div className='item_status col-sm'>
+                              <select name="itemStatus">
+                                <option value="Not In Progress">Not In Progress</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Complete">Complete</option>
+                              </select>
+                            </div>
+                            <div className='item_input col-sm'><input type="date" name="itemDate" pattern="\d{2}-\d{2}-\d{4}" /></div>
+                            
+                            <div className="col-sm-1 order-last"><button type="submit" >Submit</button></div>
+                        </div>
+                      </form>
+                    </div>
                     
                     {
                       Items.map(Item => ( //map items output
@@ -187,22 +254,6 @@ function App() {
                         </div>
                       ))
                     }
-                    
-                    
-                      <div className='new_item'>
-                        <form onSubmit={(e) => createItemInput(e, Category)}>
-                          <div className='item_input'> 
-                          <input type="text" name="itemName" placeholder="New Item"/>
-                          </div>
-                          
-                          <button type="submit" id="newItemButton">
-                            <svg width="20" height="20" viewBox="0 0 120 130" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                              <line x1='0' y1='60' x2='120' y2='60' stroke='black' />
-                              <line x1='60' y1='0' x2='60' y2='120' stroke='black' />
-                            </svg>
-                          </button>
-                        </form>
-                      </div>
                   
                 </div>
               ))
@@ -210,21 +261,31 @@ function App() {
 
               <div className="categories_output">
                 
-                <div className="category_header"><i>No Category</i></div>
-                  <div class="row">
-                    <div class="col-sm text-center">Task</div>
-                    <div class="col-sm text-center">Description</div>
-                    <div class="col-sm text-center">Status</div>
-                    <div class="col-sm text-center">Deadline</div>
-                  </div>
+              <div className="category_header d-flex justify-content-between">
+                      <div><i>No Category</i></div>
+                      <div>
 
-                  <div className='items_output'>Item 2-1</div>
-                  
-                  
-                
+                        <svg className="feather feather-plus-square" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+                        <svg className="feather feather-edit" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                      </div>
+                      
+                    </div>
 
-                
-                  <div className='items_output'>Item 2-1</div>
+                    <div className="row column_headers">
+                      <div className="col-sm text-center">Task</div>
+                      <div className="col-sm text-center">Description</div>
+                      <div className="col-sm text-center">Status</div>
+                      <div className="col-sm text-center">Deadline</div>
+                      <div className="col-sm-1 order-last"></div>
+                    </div>
+
+                  {
+                      Items.map(Item => ( //map items output
+                        <div key={Item.id}>
+                          {returnNullCategoryItems(Item)}
+                        </div>
+                      ))
+                    }
                 
                   
                 
