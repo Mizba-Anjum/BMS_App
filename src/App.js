@@ -26,10 +26,7 @@ function App() {
   useEffect( () => {
     fetchCategories();
   }, []);
-  //fetch events
-  useEffect( () => {
-    fetchEvents();
-  }, []);
+ 
 
   //rcd items
   async function fetchItems() { //fetch (get, read) items
@@ -90,39 +87,6 @@ function App() {
     await API.graphql(
       {
         query: mutations.deleteCategories,
-        variables: {
-          input: { id }
-        }
-      }
-    )
-  }
-
-  //rcd events
-  async function fetchEvents() { //fetch (get, read) events function
-    const apiData = await API.graphql({ query: queries.listEvents });
-    setEvents(apiData.data.listEvents.items);
-  }
-
-  async function createEvent() { //create events function
-    if (!(formData3.EventName && formData3.itemsID)) return;
-
-    await API.graphql({
-      query: mutations.createEvents,
-      variables: {
-        input: formData3
-      }
-    })
-
-    setCategories([...Events, formData3]);
-    setFormData2(initialFormState3);
-  }
-
-  async function deleteEvent({ id }){ //delete event function
-    const newEventsArray = Events.filter( Event => Event.id !== id);
-    setItems(newEventsArray);
-    await API.graphql(
-      {
-        query: mutations.deleteEvents,
         variables: {
           input: { id }
         }
@@ -204,7 +168,7 @@ function App() {
         <div id="main_content">
           <div id="main_content_container">
             
-            
+          
             
 
               
@@ -246,24 +210,22 @@ function App() {
 
               <div className="categories_output">
                 
-                <div><i>No Category</i></div>
+                <div className="category_header"><i>No Category</i></div>
+                  <div class="row">
+                    <div class="col-sm text-center">Task</div>
+                    <div class="col-sm text-center">Description</div>
+                    <div class="col-sm text-center">Status</div>
+                    <div class="col-sm text-center">Deadline</div>
+                  </div>
 
-                  <div>Item 2-1</div>
+                  <div className='items_output'>Item 2-1</div>
                   
-                    <div className='events_container'>
-                    <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
-                    <div>Attributes 1-2</div>
-                    <div>Attributes 1-3</div></div>
                   
                 
 
                 
-                  <div>Item 2-1</div>
-                 
-                    <div className='events_container'>
-                    <div><p>Event</p><p>Event Description</p><p>Event Tags</p></div>
-                    <div>Attributes 2-2</div>
-                    <div>Attributes 2-3</div></div>
+                  <div className='items_output'>Item 2-1</div>
+                
                   
                 
                 </div>

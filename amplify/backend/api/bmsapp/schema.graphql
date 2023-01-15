@@ -13,6 +13,7 @@ type Items @model {
   ItemName: String!
   ItemDescription: String
   ItemCategory: Categories
+  Status: String
   StartDate: String
   EndDate: String
   createdAt: AWSDateTime
