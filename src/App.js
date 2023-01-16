@@ -100,11 +100,18 @@ function App() {
     list.forEach((item) =>
       item.classList.remove('active'));
       this.classList.add('active');
-    }
-    list.forEach((item) =>
-    item.addEventListener('click', activeLink));
-  function createNewItemInputVisible() {
   }
+  list.forEach((item) =>
+  item.addEventListener('click', activeLink));
+  
+  function newItemVisible(e) {
+    const clickElem = e.target;
+    console.log(clickElem);
+    const newItem = clickElem.closest('.categories_output').querySelector('.new_item');
+    console.log(newItem);
+    newItem.classList.remove('inactive');
+  }
+
     //item input
     const current = new Date();
     const date = `${current.getMonth()}/${current.getDate()}/${current.getFullYear()}`;
@@ -170,13 +177,7 @@ function App() {
     }
   return (
     <React.Fragment>
-      <div id="topbar">
-        <ul>
-          <li className="list active"><a href="#">Overview</a></li>
-          <li className="list"><a href="#">Database</a></li>
-          <li className="list"><a href="#">Calendar</a></li>
-        </ul>
-      </div>
+      
 
       <div id="main_container">
         <div id="sidebar">
@@ -194,12 +195,17 @@ function App() {
         </div>
 
         <div id="main_content">
-          <div id="main_content_container">
-            
-          
-            
+          <div id="main_content_header">
+            <div className='list active'><a href="#">
+              <svg className="feather feather-grid" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 30" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="7" width="7" x="3" y="3"/><rect height="7" width="7" x="14" y="3"/><rect height="7" width="7" x="14" y="14"/><rect height="7" width="7" x="3" y="14"/></svg>
+              Task
+            </a></div>
+            <div className='list active'><a href="#">
+              <svg className="feather feather-calendar" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 30" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" ry="2" width="18" x="3" y="4"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              Calendar</a></div>
+          </div>
 
-              
+          <div id="main_content_container">
 
               {
               Categories.map(Category => ( //map categories output
@@ -207,12 +213,7 @@ function App() {
                   
                     <div className="category_header d-flex justify-content-between">
                       <div>{Category.CategoryName}</div>
-                      <div>
-                        <button onClick={createNewItemInputVisible()}>
-                        <svg className="feather feather-plus-square" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
-                        </button>
-                        <svg className="feather feather-edit" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                      </div>
+                      
                       
                     </div>
 
@@ -221,10 +222,17 @@ function App() {
                       <div className="col-sm text-center">Description</div>
                       <div className="col-sm text-center">Status</div>
                       <div className="col-sm text-center">Deadline</div>
-                      <div className="col-sm-1 order-last"></div>
+                      <div className="col-sm-1 text-end order-last">
+                        <div className="buttons">
+                          <button onClick={newItemVisible}>
+                          <svg className="feather feather-plus-square" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+                          </button>
+                          <svg className="feather feather-edit" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="new_item active">
+                    <div className="new_item inactive">
                       <form onSubmit={(e) => createItemInput(e, Category)}>
                         <div className='items_output text-center row'>
                             <div className='item_input col-sm'>
@@ -242,7 +250,7 @@ function App() {
                             </div>
                             <div className='item_input col-sm'><input type="date" name="itemDate" pattern="\d{2}-\d{2}-\d{4}" /></div>
                             
-                            <div className="col-sm-1 order-last"><button type="submit" >Submit</button></div>
+                            <div className="col-sm-1 text-end order-last"><button type="submit" >Submit</button></div>
                         </div>
                       </form>
                     </div>
