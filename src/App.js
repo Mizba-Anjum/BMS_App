@@ -112,6 +112,14 @@ function App() {
     newItem.classList.remove('inactive');
   }
 
+  function contentVisible(e) {
+    const clickElem = e.target;
+    console.log(clickElem);
+    const toggleItem = clickElem.closest('.categories_output').querySelector('.toggle_open');
+    console.log(toggleItem);
+    toggleItem.classList.toggle('close');
+  }
+
     //item input
     const current = new Date();
     const date = `${current.getMonth()}/${current.getDate()}/${current.getFullYear()}`;
@@ -211,12 +219,11 @@ function App() {
               Categories.map(Category => ( //map categories output
                 <div className="categories_output" key={Category.id}>
                   
-                    <div className="category_header d-flex justify-content-between">
+                    <div className="category_header d-flex justify-content-between" onClick={contentVisible}>
                       <div>{Category.CategoryName}</div>
-                      
-                      
                     </div>
 
+                    <div className='toggle_open'>
                     <div className="row column_headers">
                       <div className="col-sm text-center">Task</div>
                       <div className="col-sm text-center">Description</div>
@@ -262,6 +269,7 @@ function App() {
                         </div>
                       ))
                     }
+                  </div>
                   
                 </div>
               ))

@@ -138,7 +138,11 @@ img {
   margin: 1rem;
 }
 .categories_output .category_header {
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem;
+}
+.categories_output .close {
+  height: 0;
+  visibility: hidden;
 }
 .categories_output .column_headers {
   margin: auto;
