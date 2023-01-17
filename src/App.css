@@ -140,16 +140,17 @@ img {
 .categories_output .category_header {
   padding: 1rem;
 }
-.categories_output .close {
+.categories_output .toggle_open {
+  overflow: hidden;
+  transition: all .5s;
+}
+.categories_output .toggle_open.close {
   height: 0;
-  visibility: hidden;
 }
 .categories_output .column_headers {
   margin: auto;
   border-bottom: 1px solid rgb(238, 238, 238);
   padding-bottom: 1rem;
-}
-.categories_output .column_headers .buttons {
 }
 .categories_output .column_headers button {
   border: none;
@@ -181,6 +182,5 @@ img {
   background-color: transparent;
 }
 .categories_output .new_item.inactive {
-  height: 0;
-  visibility: hidden;
+  display: none;
 }

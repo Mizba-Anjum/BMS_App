@@ -114,10 +114,8 @@ function App() {
 
   function contentVisible(e) {
     const clickElem = e.target;
-    console.log(clickElem);
     const toggleItem = clickElem.closest('.categories_output').querySelector('.toggle_open');
-    console.log(toggleItem);
-    toggleItem.classList.toggle('close');
+    //toggleItem.classList.toggle('show');
   }
 
     //item input
@@ -219,11 +217,11 @@ function App() {
               Categories.map(Category => ( //map categories output
                 <div className="categories_output" key={Category.id}>
                   
-                    <div className="category_header d-flex justify-content-between" onClick={contentVisible}>
+                    <a href=".toggle_open" data-bs-toggle="collapse"><div className="category_header d-flex justify-content-between">
                       <div>{Category.CategoryName}</div>
-                    </div>
+                    </div></a>
 
-                    <div className='toggle_open'>
+                    <div className='collapse toggle_open'>
                     <div className="row column_headers">
                       <div className="col-sm text-center">Task</div>
                       <div className="col-sm text-center">Description</div>
