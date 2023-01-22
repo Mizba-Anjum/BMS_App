@@ -3,7 +3,6 @@ import {API} from 'aws-amplify';
 import * as queries from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import './App.css';
-import TaskViewPage from './content_pages/task-view';
 
 const initialFormState = { ItemName: "", ItemDescription: "", ItemCategory: {}}; //item form input
 const initialFormState2 = { CategoryName: ""}; //category form input
@@ -233,7 +232,7 @@ function App() {
               Add Category</button></div>
           </div>
 
-          <TaskViewPage/>
+          
           <div id="main_content_container">
             
 
