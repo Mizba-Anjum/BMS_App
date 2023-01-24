@@ -211,10 +211,7 @@ function App() {
               Calendar</a></div>
           </div>
 
-<<<<<<< HEAD
           
-=======
->>>>>>> parent of b11a9ce (attempt split coding)
           <div id="main_content_container">
 
               {
