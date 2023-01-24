@@ -232,9 +232,11 @@ function App() {
               Add Category</button></div>
           </div>
 
+<<<<<<< HEAD
           
+=======
+>>>>>>> parent of b11a9ce (attempt split coding)
           <div id="main_content_container">
-            
 
               {
               Categories.map((Category, index) => ( //map categories output
